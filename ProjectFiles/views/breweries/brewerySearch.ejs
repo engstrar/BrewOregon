@@ -1,0 +1,17 @@
+<% layout("layouts/boilerplate")%>
+
+    <div class="container">
+        <h1 class="display-6 text-center">Brewery Search Results</h1>
+        <h6 class="text-center">
+            <small class="text-muted">This page will be used to display and edit all of the breweries that match the
+                given search criteria.</small>
+        </h6>
+
+        <!-- Brewery Partial-->
+        <% for (const brewery of results) {%>
+            <%- include("../partials/brewery", {brewery: brewery}) %>
+                <%}%>
+    </div>
+
+    <!-- Including the Scripts for AJAX Interactions-->
+    <!-- <script src="js/breweries.js"></script> -->

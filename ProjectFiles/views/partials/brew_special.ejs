@@ -1,0 +1,13 @@
+<!-- This card format will be used to display all of the brew_special relationships selected from the database-->
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">
+            <%= brew_special.breweryName%>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <%= brew_special.specialtyName%>
+        </h6>
+        <a href="/editBrewSpecial?specialtyID=<%= brew_special.specialtyID%>&breweryID=<%= brew_special.breweryID%>"
+            class="card-link">Edit Relationship </a>
+    </div>
+</div>

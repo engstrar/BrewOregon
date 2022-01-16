@@ -1,0 +1,13 @@
+<% layout("layouts/boilerplate")%>
+
+    <div class="container">
+        <h1 class="text-center">ERROR</h1>
+
+        <p>This Entry cannot be removed from the Database as it is being referenced by another entry. If you are
+            looking to test out the delete feature I suggest creating a test entry in the table of interest and
+            use that one for your testing. Entries involved in required relationships cannot be deleted.
+        </p>
+
+        <p class="text-muted">Full Error Test: <%= error%>
+        </p>
+    </div>

@@ -1,0 +1,61 @@
+<% layout("layouts/boilerplate")%>
+    <% for (const city of results) {%>
+        <div class="container">
+            <!-- Bootstrap Card for a City Pre Populated with the Selected City's Information-->
+            <div class="card">
+                <form action="/updateCity">
+                    <div class="card-body">
+                        <h5 class="card-title">Editing: <%=city.cityName%>
+                        </h5>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="cityID" class="form-control" id="cityID"
+                                    value="<%=city.cityID%>" readonly>
+                            </div>
+                            <div class="col">
+                                <input type="text" name="cityName" class="form-control" id="cityName"
+                                    value="<%=city.cityName%>" required>
+                            </div>
+                            <div class="col">
+                                <select name="region" id="region" class="form-select">
+
+                                    <option value=" Central Oregon" <% if (city.region=="Central Oregon" ) {%>selected
+                                        <%} %> >Central Oregon
+                                    </option>
+
+                                    <option value="Columbia Gorge" <% if (city.region=="Columbia Gorge" ) {%>
+                                        selected<%} %> >Columbia Gorge</option>
+
+                                    <option value="Northern Coast" <% if (city.region=="Northern Coast" ) {%>
+                                        selected<%} %> >Northern Coast</option>
+
+                                    <option value="Northeastern Oregon" <% if (city.region=="Northeastern Oregon" ) {%>
+                                        selected<%} %> >Northeastern Oregon</option>
+
+                                    <option value="Portland Metropolitan" <% if (city.region=="Portland Metropolitan" )
+                                        {%> selected <%} %> >Portland Metropolitan </option>
+
+                                    <option value="South Central and Southeastern Oregon" <% if
+                                        (city.region=="South Central and Southeastern Oregon" ) {%>
+                                        selected<%} %> >South Central and Southeastern Oregon </option>
+
+                                    <option value="Southern Coast" <% if (city.region=="Southern Coast" ) {%>
+                                        selected<%} %> >Southern Coast</option>
+
+                                    <option value="Southern Oregon" <% if (city.region=="Southern Oregon" ) {%>
+                                        selected<%} %> >Southern Oregon</option>
+
+                                    <option value="Willamette Valley" <% if (city.region=="Willamette Valley" ) {%>
+                                        selected<%} %> >Willamette Valley</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-warning">Update</button>
+                        <a href="/deleteCity?ID=<%= city.cityID%>" class=" btn btn-danger">Delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%}%>

@@ -1,0 +1,50 @@
+<% layout("layouts/boilerplate")%>
+
+    <div class="container">
+        <h1 class="display-6 text-center">Find a Brewery that Serves your Favorite Drink</h1>
+        <h6 class="text-center">
+            <small class="text-muted">This page will be used to display all of the brewery-specialty relationships, add
+                new relationships, and delete existing relationships.</small>
+        </h6>
+
+        <!-- Bootstrap Card Set Up as a Form to Add a New Relationship -->
+        <div class="card">
+            <form id="addBrewSpecial" action="/addBrewSpecial">
+                <div class="card-body">
+                    <h5 class="card-title">Add a Brewery-Specialty Relationship</h5>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <select name="breweryID" id="breweryID" class="form-select" required>
+                                <option value="" hidden>Select a Brewery</option>
+                                <% for (const brewery of breweries) {%>
+                                    <option value=<%=brewery.breweryID%>>
+                                        <%= brewery.breweryName%>
+                                    </option>
+                                    <%}%>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select name="specialtyID" id="specialtyID" class="form-select" required>
+                                <option value="" hidden>Select a Specialty</option>
+                                <% for (const specialty of specialties) {%>
+                                    <option value=<%=specialty.specialtyID%>>
+                                        <%= specialty.specialtyName%>
+                                    </option>
+                                    <%}%>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-dark align-right">Add</button>
+                </div>
+            </form>
+        </div>
+        <br>
+
+        <!-- brew_special Partial-->
+        <% for (const row of results) {%>
+            <%- include("../partials/brew_special", {brew_special: row}) %>
+                <%}%>
+
+    </div>

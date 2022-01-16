@@ -1,0 +1,28 @@
+<!-- Bootstrap Card for Displaying a Tap House-->
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">
+            #<%= tapHouse.tapHouseID%> - <%= tapHouse.tapHouseName%>
+        </h5>
+        <h6>
+            <%= tapHouse.breweryName%>
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <%= tapHouse.tapAddr1%>
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <%= tapHouse.cityName%>, <%= tapHouse.tapState%>
+                    <%= tapHouse.tapZip%>
+        </h6>
+        <h6 class="card-subtitle mb-2 ">This Tap House
+            <% if (tapHouse.serveFood==1) { %>
+                <strong class="text-success">DOES</strong>
+                <% } else { %>
+                    <strong class="text-danger">DOES NOT</strong>
+                    <% } %>
+                        Serve Food
+        </h6>
+        <a href="/editTapHouse?ID=<%= tapHouse.tapHouseID%>" class="card-link">Edit Tap House</a>
+    </div>
+</div>
+<br>

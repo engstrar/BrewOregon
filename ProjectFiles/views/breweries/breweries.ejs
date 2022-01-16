@@ -1,0 +1,79 @@
+<% layout("layouts/boilerplate")%>
+
+    <div class="container">
+        <h1 class="display-6 text-center">ALL OREGON BREWERIES</h1>
+        <h6 class="text-center">
+            <small class="text-muted">This page will be used to display all of the breweries, add new breweries, and
+                edit existing breweries.</small>
+        </h6>
+
+        <div class="row">
+            <div class="col">
+                <!-- Bootstrap Card for Displaying a Brewery Set Up as a Form to Add a new Brewery-->
+                <div class="card">
+                    <form id="addBrewery" action="/addBrewery">
+                        <div class="card-body">
+                            <h5 class="card-title">Add a New Brewery</h5>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control" id="breweryName" placeholder="Brewery Name"
+                                        name="breweryName" required>
+                                </div>
+                                <div class="col">
+                                    <select name="cityID" id="cityID" class="form-select" required>
+                                        <option value="" hidden>Select a City</option>
+                                        <% for (const city of cities) {%>
+                                            <option value=<%=city.cityID%>>
+                                                <%= city.cityName%>
+                                            </option>
+                                            <%}%>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="text-end"><small>Don't See the City? <a href="/cities">Add it Here</a></small>
+                            </p>
+                            <button type="submit" class="btn btn-dark align-right">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <form id="searchBrewery" action="/brewerySearch">
+                        <div class="card-body">
+                            <h5 class="card-title">Search for a Brewery</h5>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control" id="breweryName" placeholder="Brewery Name"
+                                        name="breweryName">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="cityName" placeholder="City Name"
+                                        name="cityName">
+                                </div>
+                            </div>
+                            <p class="text-end text-white">Filling space<small></small>
+                            </p>
+                            <button type="submit" class="btn btn-dark align-right">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <br>
+            </div>
+
+        </div>
+
+        <br>
+
+
+
+        <!-- Brewery Partial-->
+        <% for (const brewery of results) {%>
+            <%- include("../partials/brewery", {brewery: brewery}) %>
+                <%}%>
+    </div>
+
+    <!-- Including the Scripts for AJAX Interactions-->
+    <!-- <script src="js/breweries.js"></script> -->

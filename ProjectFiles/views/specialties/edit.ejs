@@ -1,0 +1,34 @@
+<% layout("layouts/boilerplate")%>
+    <% for (const specialty of results) {%>
+        <div class="container">
+            <div class="card">
+                <form id="editSpecialty" action="/updateSpecialty">
+                    <div class="card-body">
+                        <h5 class="card-title">Editing Specialty: <%= specialty.specialtyName%>
+                        </h5>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" id="specialtyID" name="specialtyID"
+                                    value="<%=specialty.specialtyID%>" readonly>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="specialtyName" name="specialtyName"
+                                    value="<%=specialty.specialtyName%>" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <textarea class="form-control" id="description" name="description"
+                                required><%=specialty.description%></textarea>
+                            <label for="description">Please provide a short (1-2 sentence) description of this
+                                specialty.</label>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-warning">Update</button>
+                        <a href="/deleteSpecialty?ID=<%= specialty.specialtyID%>" class="btn btn-danger">Delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%}%>

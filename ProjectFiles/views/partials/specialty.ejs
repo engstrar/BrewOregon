@@ -1,0 +1,13 @@
+<!-- This card format will be used to display all of the specialties selected from the database-->
+<!-- Bootstrap Card for Displaying a Specialty -->
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">
+            #<%= specialty.specialtyID%> - <%= specialty.specialtyName%>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <%= specialty.description%>
+        </h6>
+        <a href="/editSpecialty?ID=<%= specialty.specialtyID%>" class="card-link">Edit Specialty</a>
+    </div>
+</div>

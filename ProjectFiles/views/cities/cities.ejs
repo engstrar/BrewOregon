@@ -1,0 +1,50 @@
+<% layout("layouts/boilerplate")%>
+
+    <div class="container">
+        <h1 class="display-6 text-center">ALL CITIES</h1>
+        <h6 class="text-center">
+            <small class="text-muted">This page will be used to display all of the cities, add new cities, and
+                edit existing cities.</small>
+        </h6>
+
+        <!-- Bootstrap Card for Adding a New City-->
+        <div class="card">
+            <form id="addCity" action="/addCity">
+                <div class="card-body">
+                    <h5 class="card-title">Add a New City</h5>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" name="cityName" class="form-control" id="cityName"
+                                placeholder="City Name" required>
+                        </div>
+                        <div class="col">
+                            <select name="region" id="region" class="form-select" required>
+                                <option value="" hidden>Select a Region</option>
+                                <option value="Central Oregon">Central Oregon</option>
+                                <option value="Columbia Gorge">Columbia Gorge</option>
+                                <option value="Northern Coast">Northern Coast</option>
+                                <option value="Northeastern Oregon">Northeastern Oregon</option>
+                                <option value="Portland Metropolitan">Portland Metropolitan</option>
+                                <option value="South Central and Southeastern Oregon">South Central and Southeastern
+                                    Oregon</option>
+                                <option value="Southern Coast">Southern Coast</option>
+                                <option value="Southern Oregon">Southern Oregon</option>
+                                <option value="Willamette Valley">Willamette Valley</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-dark align-right">Add</button>
+                </div>
+            </form>
+        </div>
+        <br>
+
+        <% for (const city of results) {%>
+            <%- include("../partials/city", {city: city}) %>
+                <%}%>
+    </div>
+
+    <!-- Including the Scripts for AJAX Interactions-->
+    <!-- <script src="js/cities.js"></script> -->

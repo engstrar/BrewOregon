@@ -1,0 +1,13 @@
+<!-- This card format will be used to display all of the breweries selected from the database-->
+<!-- Bootstrap Card for Displaying a Brewery -->
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">
+            #<%= brewery.breweryID%> - <%= brewery.breweryName%>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <%= brewery.cityName%>, OR
+        </h6>
+        <a href="/editBrewery?ID=<%= brewery.breweryID%>" class="card-link">Edit Brewery</a>
+    </div>
+</div>

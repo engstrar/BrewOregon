@@ -1,0 +1,39 @@
+<% layout("layouts/boilerplate")%>
+
+    <div class="container">
+        <h1 class="display-6 text-center">ALL SPECIALTIES</h1>
+        <h6 class="text-center">
+            <small class="text-muted">This page will be used to display all of the specialties, add new specialties, and
+                edit existing specialties.</small>
+        </h6>
+
+        <!-- Bootstrap Card for Displaying a Specialty Set Up as a Form to Add a new Specialty-->
+        <div class="card">
+            <form id="addSpecialty" action="/addSpecialty">
+                <div class="card-body">
+                    <h5 class="card-title">Add a New Specialty</h5>
+                    <br>
+                    <input type="text" class="form-control" id="specialtyName" placeholder="Specialty Name"
+                        name="specialtyName" required>
+                    <br>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Description" id="description" name="description"
+                            required></textarea>
+                        <label for="description">Please provide a short (1-2 sentence) description of this
+                            specialty.</label>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-dark align-right">Add</button>
+                </div>
+            </form>
+        </div>
+        <br>
+
+        <!-- Specialties Partial-->
+        <% for (const specialty of results) {%>
+            <%- include("../partials/specialty", {specialty: specialty}) %>
+                <%}%>
+    </div>
+
+    <!-- Including the Scripts for AJAX Interactions -->
+    <!-- <script src="js/specialties.js"></script> -->

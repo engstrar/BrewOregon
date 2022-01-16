@@ -1,0 +1,20 @@
+#mainNavbar {
+	/* change things about the whole navbar */
+	color: white;
+}
+
+#mainNavbar .navbar-brand {
+	/* change branding */
+	font-size: 3em;
+	color: white;
+}
+
+#mainNavbar .nav-link {
+	/* change things about navbar links */
+	color: white;
+}
+
+#mainNavbar .nav-link:hover {
+	/* change things about navbar links when hovering over */
+	color: grey;
+}

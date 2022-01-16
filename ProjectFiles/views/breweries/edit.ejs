@@ -1,0 +1,39 @@
+<% layout("layouts/boilerplate")%>
+    <% for (const brewery of results) {%>
+        <div class="container">
+            <div class="card">
+                <form id="editBrewery" action="/updateBrewery">
+                    <div class="card-body">
+                        <h5 class="card-title">Edit a Brewery</h5>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" id="breweryID" name="breweryID"
+                                    value="<%=brewery.breweryID%>" readonly>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="breweryName" name="breweryName"
+                                    value="<%=brewery.breweryName%>" required>
+                            </div>
+                            <div class="col">
+                                <select name="cityID" id="cityID" class="form-select">
+                                    <option selected disabled>Select a City</option>
+                                    <% for (const city of cities) {%>
+                                        <option value=<%=city.cityID%>
+                                            <% if (city.cityID==brewery.cityID) {%> selected
+                                                <%} %>>
+                                                    <%= city.cityName%>
+                                        </option>
+                                        <%}%>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="text-end"><small>Don't See the City? <a href="/cities">Add it Here</a></small>
+                        </p>
+                        <button type="submit" class="btn btn-warning">Update</button>
+                        <a href="/deleteBrewery?ID=<%= brewery.breweryID%>" class="btn btn-danger">Delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%}%>

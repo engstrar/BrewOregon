@@ -1,0 +1,42 @@
+<% layout("layouts/boilerplate")%>
+    <% for (const row of results) {%>
+        <div class="container">
+            <!-- Bootstrap Card Set Up as a Form to Edit Relationship -->
+            <div class="card">
+                <form id="editBrewSpecial" action="#">
+                    <div class="card-body">
+                        <h5 class="card-title">Updating Brewery-Specialty Relationship</h5>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <select name="breweryID" id="breweryID" class="form-select" disabled>
+                                    <option selected disabled>Select a Brewery</option>
+                                    <% for (const brewery of breweries) {%>
+                                        <option value=<%=brewery.breweryID%>
+                                            <% if (brewery.breweryID==row.breweryID) {%> selected
+                                                <%} %>><%= brewery.breweryName%>
+                                        </option>
+                                        <%}%>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select name="specialtyID" id="specialtyID" class="form-select" disabled>
+                                    <option selected disabled>Select a Specialty</option>
+                                    <% for (const specialty of specialties) {%>
+                                        <option value=<%=specialty.specialtyID%>
+                                            <% if (specialty.specialtyID==row.specialtyID) {%> selected
+                                                <%} %>>
+                                                    <%= specialty.specialtyName%>
+                                        </option>
+                                        <%}%>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <a href="/deleteBrewSpecial?breweryID=<%=row.breweryID%>&specialtyID=<%=row.specialtyID%>"
+                            class="btn btn-danger">Delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%}%>
